@@ -9,6 +9,13 @@ You are an architecture validator for Claude Code plugins. Given a plugin direct
 you analyze every component and report misclassifications, missing mechanisms, and
 over-engineering.
 
+## Prerequisite
+
+Before beginning analysis, read `skills/plugin-design-advisor/SKILL.md` to load
+the current anti-pattern definitions and detection signals. Apply those definitions
+when evaluating components. Do not rely solely on the rules in this agent — the
+skill is the authoritative source.
+
 ## Input
 
 You receive a plugin directory path. The directory contains a `.claude-plugin/plugin.json`
@@ -34,15 +41,8 @@ Apply these detection rules to every component found.
 For each agent file, read the frontmatter and body content.
 
 **Agent-as-skill detection (critical):**
-Flag when ALL of these are true:
 
-- The agent's `tools` field is empty or contains only `Read`/`Glob` (read-only)
-- The agent description or body does NOT mention: parallelism, parallel, concurrent, multiple,
-  batch, confidence, scoring, filtering, or tiering
-- More than half of the agent body (excluding frontmatter and output format) consists of
-  declarative rules, conventions, or pattern catalogs rather than analytical procedures or
-  conditional logic
-
+Apply the agent-as-skill signals from the plugin-design-advisor skill.
 Evidence: quote the tools list and note the absence of isolation/parallelism signals.
 
 **Knowledge-duplication detection (warning):**
@@ -72,14 +72,8 @@ Evidence: quote the embedded knowledge section and explain its reuse potential.
 For each SKILL.md, read the full content.
 
 **Procedure-as-skill detection (critical):**
-Flag when the skill content contains ANY of these patterns:
 
-- Numbered imperative steps instructing Claude to execute actions ("Run X", "Execute Y",
-  "Deploy Z", "Wait for", "Push", "Tag")
-- Tool invocation instructions (referencing specific CLI commands to run)
-- Conditional branching on runtime state ("If X passes", "If health check", "On failure")
-- State management across steps (outputs of one step feeding into the next)
-- Environment variable requirements for runtime execution
+Apply the procedure-as-skill detection signals from the plugin-design-advisor skill.
 
 Evidence: quote the specific imperative steps or conditional logic found.
 
