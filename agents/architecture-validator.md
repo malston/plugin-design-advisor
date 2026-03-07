@@ -40,8 +40,9 @@ Flag when ALL of these are true:
 - The agent's `tools` field is empty or contains only `Read`/`Glob` (read-only)
 - The agent description or body does NOT mention: parallelism, parallel, concurrent, multiple,
   batch, confidence, scoring, filtering, or tiering
-- The agent body is primarily reference material (conventions, rules, patterns) rather than
-  analysis procedures
+- More than half of the agent body (excluding frontmatter and output format) consists of
+  declarative rules, conventions, or pattern catalogs rather than analytical procedures or
+  conditional logic
 
 Evidence: quote the tools list and note the absence of isolation/parallelism signals.
 
@@ -51,6 +52,21 @@ content sections (repeated rules, identical reference material, duplicated conve
 as knowledge that should be extracted into a shared skill.
 
 Evidence: identify the duplicated sections and which agents contain them.
+
+**Skill-as-agent detection (warning):**
+Flag when an agent's body contains a substantial block of domain knowledge (conventions,
+heuristics, reference material) that is NOT shared with other agents but would benefit from
+being a reusable skill because:
+
+- The knowledge could be auto-invoked from conversation context independent of this agent
+- Other plugins or agents outside this plugin could reuse it
+- The knowledge section exceeds ~200 words of declarative reference material
+
+This differs from agent-as-skill (where the entire agent should be a skill) and from
+knowledge-duplication (where multiple agents share the same content). Skill-as-agent flags
+a single agent that correctly needs isolation but embeds knowledge that should be extracted.
+
+Evidence: quote the embedded knowledge section and explain its reuse potential.
 
 ### Skill analysis
 
@@ -77,7 +93,7 @@ Flag when the command description or body mentions ANY of these system-event tri
 
 - "every file write", "every save", "on save", "whenever a file is saved"
 - "automatically", "on every", "runs on each"
-- "after editing", "after writing", "after creating"
+- "after editing", "after writing", "after modifying", "after creating"
 - Language indicating the user "must remember" or "should remember" to invoke it
 
 These phrases indicate the command should be a hook (PostToolUse or PreToolUse) rather than
@@ -94,12 +110,25 @@ Flag when ALL of these are true:
 
 - The hook has a `matcher` that fires on a broad event (e.g., tool_name: "Write" without
   path filtering)
-- There is no mention of suppression, session state, deduplication, or "already shown"
-  in the hook configuration or notes
+- The hook's `matcher`, `steps`, and `event` configuration contain no suppression,
+  session state, deduplication, or "already shown" logic
 - The hook's `matcher` does not include path-based filtering (e.g., `file_pattern` or
   `path` constraints that narrow scope to relevant files)
 
 Evidence: describe the broad matcher and note the absence of suppression logic.
+
+### MCP analysis
+
+Check for MCP server directories or configuration (e.g., `<plugin-dir>/mcp-servers/`,
+`<plugin-dir>/mcp/`, or MCP references in `plugin.json`).
+
+**MCP-for-no-reason detection (warning):**
+Flag when the plugin includes an MCP server but the plugin does not wrap an external service
+with its own protocol, authentication, or persistent connection. MCP adds protocol overhead,
+deployment complexity, and maintenance burden. Skills, agents, and commands can handle most
+plugin capabilities without MCP.
+
+Evidence: identify the MCP server and note the absence of external service dependency.
 
 ## Output Format
 
@@ -146,5 +175,7 @@ Stop after the closing `]`.
 - Report ONLY findings supported by evidence from the files you read.
 - Do not flag components that are correctly classified.
 - Do not speculate about components you cannot read.
-- Ignore files with `_anti_pattern` or `ANTI-PATTERN` annotations -- these are test annotations,
-  not part of the component's actual design. Analyze the component itself.
+- Metadata annotations (HTML comments containing `ANTI-PATTERN` and JSON fields prefixed with
+  underscore like `_anti_pattern` or `_notes`) are documentation metadata. Do not treat them as
+  part of the component's functional design. Analyze only the component's structure, configuration,
+  and non-metadata content.

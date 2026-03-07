@@ -38,7 +38,7 @@ plugin-design-advisor/
 │   └── plugin-file-guard.json         # PreToolUse on Write/Edit to agents/ and skills/ paths
 ├── tests/
 │   └── fixtures/
-│       └── misclassified-plugin/      # 4 intentional anti-patterns for validator testing
+│       └── misclassified-plugin/      # 6 misclassifications across 4 anti-pattern types
 └── README.md
 ```
 
