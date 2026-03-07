@@ -48,7 +48,9 @@ plugin-design-advisor/
   - Validator correctly identifies all 4 anti-pattern types
   - Self-audit passes: 0 critical findings against own source
   - Known pattern: agent must load skill at runtime to avoid definition drift
-- **Phase 2 (next):** Design command + requirements-analyzer + constraint-extractor agents
+- **Phase 2 (complete):** Design command + requirements-analyzer + constraint-extractor agents
+  - `/plugin-design-advisor:design` orchestrates parallel analysis via Task tool
+  - `DECISIONS.md` suppression for intentional deviations
 - **Phase 3:** plugin-file-guard hook (after Phase 1 signal:noise is measured)
 - **Phase 4:** decision-explorer playground skill
 
@@ -117,7 +119,7 @@ plugin-design-advisor/
 ### Open
 
 - Hook suppression: how to detect if main skill is already in context this session?
-- Validator false positives: should intentional deviations be suppressible via `DECISIONS.md`?
+- Validator false positives: resolved -- `DECISIONS.md` suppression implemented in Phase 2
 - decision-explorer state: stateless HTML artifact acceptable, or persist via storage API?
 - Agent schema versioning: maintenance contract when heuristics evolve?
 

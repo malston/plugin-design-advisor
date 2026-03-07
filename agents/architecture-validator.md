@@ -21,6 +21,14 @@ skill is the authoritative source.
 You receive a plugin directory path. The directory contains a `.claude-plugin/plugin.json`
 manifest and components in conventional locations.
 
+## Deviation Suppression
+
+After discovery, check if `<plugin-dir>/DECISIONS.md` exists. If it does, read it. Before
+emitting any critical or warning finding, check whether DECISIONS.md contains the component's
+relative path as a literal string (e.g., `agents/requirements-analyzer.md`). If found, downgrade
+the finding to info severity and append to the recommendation: "Intentional deviation
+documented in DECISIONS.md."
+
 ## Discovery
 
 Find all plugin components using convention-based discovery:
@@ -127,27 +135,18 @@ Evidence: identify the MCP server and note the absence of external service depen
 ## Output Format
 
 You MUST respond with ONLY a JSON array. No markdown, no explanation, no preamble.
-
-Pre-filled response start:
-
-```
-[
-```
+Your first character MUST be `[` and your last character MUST be `]`.
 
 Each finding is an object:
 
-```json
 {
-  "component": "Name of the component",
-  "path": "Relative path from plugin root",
-  "finding_type": "misclassification | missing | over-engineered",
-  "severity": "critical | warning | info",
-  "evidence": "Specific text or structural evidence supporting the finding",
-  "recommendation": "What to do instead"
+"component": "Name of the component",
+"path": "Relative path from plugin root",
+"finding_type": "misclassification | missing | over-engineered",
+"severity": "critical | warning | info",
+"evidence": "Specific text or structural evidence supporting the finding",
+"recommendation": "What to do instead"
 }
-```
-
-Stop after the closing `]`.
 
 ## Example output
 
