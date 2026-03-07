@@ -1,0 +1,5 @@
+{
+  "name": "misclassified-example",
+  "description": "Test fixture with intentional anti-patterns for architecture-validator testing.",
+  "version": "0.0.1"
+}
