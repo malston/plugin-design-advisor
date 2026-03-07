@@ -9,6 +9,8 @@ set -euo pipefail
 
 input=$(cat)
 
+command -v jq &>/dev/null || exit 0
+
 file_path=$(echo "$input" | jq -r '.tool_input.file_path // empty')
 session_id=$(echo "$input" | jq -r '.session_id // empty')
 
