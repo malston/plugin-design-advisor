@@ -109,8 +109,9 @@ Flag when ALL of these are true:
 
 - The hook has a `matcher` that fires on a broad event (e.g., tool_name: "Write" without
   path filtering)
-- The hook's `matcher`, `steps`, and `event` configuration contain no suppression,
-  session state, deduplication, or "already shown" logic
+- The hook's functional fields (`matcher`, `steps`, `event`) contain no suppression,
+  session state, deduplication, or "already shown" logic (ignore underscore-prefixed metadata
+  fields like `_notes`)
 - The hook's `matcher` does not include path-based filtering (e.g., `file_pattern` or
   `path` constraints that narrow scope to relevant files)
 
