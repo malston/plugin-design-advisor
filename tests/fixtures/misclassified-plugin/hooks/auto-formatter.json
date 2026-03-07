@@ -1,0 +1,18 @@
+{
+  "hooks": [
+    {
+      "event": "PostToolUse",
+      "matcher": {
+        "tool_name": "Write"
+      },
+      "steps": [
+        {
+          "type": "command",
+          "command": "echo 'Auto-formatting: please ensure consistent indentation in the file you just wrote.'"
+        }
+      ]
+    }
+  ],
+  "_anti_pattern": "hook-without-suppression",
+  "_notes": "This hook fires on every Write event with no path filtering, no session-state check, and no deduplication. It fires on JSON, markdown, images -- any file type. Should filter to source code files and track whether the reminder was already shown this session."
+}
