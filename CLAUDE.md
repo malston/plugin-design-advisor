@@ -25,7 +25,7 @@ This is a Claude Code plugin (`.claude-plugin/plugin.json`). Components:
 - `agents/` -- Markdown agent definitions with frontmatter (`description`, `model`, `tools`). All agents use Sonnet. All output structured JSON.
 - `commands/` -- Markdown command files for user-invoked workflows.
 - `hooks/` -- JSON hook definitions for event-driven automation.
-- `tests/fixtures/misclassified-plugin/` -- Test plugin with 4 intentional anti-patterns (agent-as-skill, procedure-as-skill, command-without-hook, hook-without-suppression) for validating the architecture-validator agent.
+- `tests/fixtures/misclassified-plugin/` -- Test plugin with 6 intentional misclassifications across 4 anti-pattern types (agent-as-skill, procedure-as-skill, command-without-hook, hook-without-suppression) for validating the architecture-validator agent.
 
 ## Coding Conventions
 
