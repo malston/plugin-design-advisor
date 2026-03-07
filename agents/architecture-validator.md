@@ -73,7 +73,7 @@ For each SKILL.md, read the full content.
 
 **Procedure-as-skill detection (critical):**
 
-Apply the skill-as-agent signals from the plugin-design-advisor skill.
+Apply the procedure-as-skill detection signals from the plugin-design-advisor skill.
 
 Evidence: quote the specific imperative steps or conditional logic found.
 
