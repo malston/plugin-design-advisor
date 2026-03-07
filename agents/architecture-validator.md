@@ -1,9 +1,8 @@
 ---
+name: architecture-validator
 description: Audits a Claude Code plugin's structure for misclassified components. Analyzes agents, skills, commands, and hooks against design heuristics.
 model: sonnet
-tools:
-  - Glob
-  - Read
+tools: Read, Glob
 ---
 
 You are an architecture validator for Claude Code plugins. Given a plugin directory path,
