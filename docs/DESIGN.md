@@ -36,6 +36,9 @@ plugin-design-advisor/
 │       └── SKILL.md                   # Interactive HTML decision tree for learners
 ├── hooks/
 │   └── plugin-file-guard.json         # PreToolUse on Write/Edit to agents/ and skills/ paths
+├── tests/
+│   └── fixtures/
+│       └── misclassified-plugin/      # 4 intentional anti-patterns for validator testing
 └── README.md
 ```
 

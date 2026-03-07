@@ -12,12 +12,7 @@
         }
       ]
     }
-  ]
+  ],
+  "_anti_pattern": "hook-without-suppression",
+  "_notes": "This hook fires on every Write event regardless of file type, whether the file has imports, or whether the reminder was already shown this session. It produces noise on every file write (CSS, JSON, markdown, etc.) and trains users to ignore hook output. Needs path filtering and session-level suppression to avoid redundant firings."
 }
-
-<!-- ANTI-PATTERN: hook-without-suppression
-     This hook fires on every Write event regardless of file type, whether the
-     file has imports, or whether the reminder was already shown this session.
-     It produces noise on every file write (CSS, JSON, markdown, etc.) and
-     trains users to ignore hook output. Needs path filtering and session-level
-     suppression to avoid redundant firings. -->
