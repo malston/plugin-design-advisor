@@ -21,6 +21,14 @@ skill is the authoritative source.
 You receive a plugin directory path. The directory contains a `.claude-plugin/plugin.json`
 manifest and components in conventional locations.
 
+## Deviation Suppression
+
+After discovery, check if `<plugin-dir>/DECISIONS.md` exists. If it does, read it. Before
+emitting any critical or warning finding, check whether DECISIONS.md contains a reference to
+the component's relative path (e.g., `agents/requirements-analyzer.md`). If found, downgrade
+the finding to info severity and append to the recommendation: "Intentional deviation
+documented in DECISIONS.md."
+
 ## Discovery
 
 Find all plugin components using convention-based discovery:
