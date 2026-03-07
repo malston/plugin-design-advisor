@@ -135,27 +135,18 @@ Evidence: identify the MCP server and note the absence of external service depen
 ## Output Format
 
 You MUST respond with ONLY a JSON array. No markdown, no explanation, no preamble.
-
-Pre-filled response start:
-
-```
-[
-```
+Your first character MUST be `[` and your last character MUST be `]`.
 
 Each finding is an object:
 
-```json
 {
-  "component": "Name of the component",
-  "path": "Relative path from plugin root",
-  "finding_type": "misclassification | missing | over-engineered",
-  "severity": "critical | warning | info",
-  "evidence": "Specific text or structural evidence supporting the finding",
-  "recommendation": "What to do instead"
+"component": "Name of the component",
+"path": "Relative path from plugin root",
+"finding_type": "misclassification | missing | over-engineered",
+"severity": "critical | warning | info",
+"evidence": "Specific text or structural evidence supporting the finding",
+"recommendation": "What to do instead"
 }
-```
-
-Stop after the closing `]`.
 
 ## Example output
 

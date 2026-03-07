@@ -53,23 +53,14 @@ Evaluate the feature description for these architectural constraints:
 ## Output Format
 
 You MUST respond with ONLY a JSON object. No markdown, no explanation, no preamble.
-
-Pre-filled response start:
-
-```
-{
-```
+Your first character MUST be `{` and your last character MUST be `}`.
 
 Schema:
 
-```json
 {
-  "needs_parallelism": true | false,
-  "needs_tool_isolation": true | false,
-  "needs_model_tiering": true | false,
-  "context_budget": "low | medium | high",
-  "has_io_contract": true | false
+"needs_parallelism": true | false,
+"needs_tool_isolation": true | false,
+"needs_model_tiering": true | false,
+"context_budget": "low | medium | high",
+"has_io_contract": true | false
 }
-```
-
-Stop after the closing `}`.

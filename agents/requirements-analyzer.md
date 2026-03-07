@@ -48,22 +48,13 @@ Evaluate the feature description against the decision framework from the skill:
 ## Output Format
 
 You MUST respond with ONLY a JSON object. No markdown, no explanation, no preamble.
-
-Pre-filled response start:
-
-```
-{
-```
+Your first character MUST be `{` and your last character MUST be `}`.
 
 Schema:
 
-```json
 {
-  "task_type": "knowledge | action | workflow",
-  "trigger": "natural | explicit | event",
-  "context_need": "inline | isolated",
-  "reusability": true | false
+"task_type": "knowledge | action | workflow",
+"trigger": "natural | explicit | event",
+"context_need": "inline | isolated",
+"reusability": true | false
 }
-```
-
-Stop after the closing `}`.
