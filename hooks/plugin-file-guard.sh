@@ -48,14 +48,26 @@ esac
 # Session dedup: fire at most once per file path per session
 if [[ -n "$session_id" ]]; then
   dedup_dir="${TMPDIR:-/tmp}/plugin-file-guard"
-  mkdir -p "$dedup_dir"
-  # Hash the session_id + file_path to create a dedup key
-  dedup_key=$(printf '%s:%s' "$session_id" "$file_path" | shasum -a 256 | cut -d' ' -f1)
-  dedup_file="$dedup_dir/$dedup_key"
-  if [[ -f "$dedup_file" ]]; then
-    exit 0
+  if mkdir -p "$dedup_dir" 2>/dev/null; then
+    # Prune dedup files older than 24 hours
+    find "$dedup_dir" -type f -mtime +1 -delete 2>/dev/null || true
+
+    # Hash the session_id + file_path to create a dedup key
+    if command -v shasum &>/dev/null; then
+      dedup_key=$(printf '%s:%s' "$session_id" "$file_path" | shasum -a 256 | cut -d' ' -f1)
+    elif command -v sha256sum &>/dev/null; then
+      dedup_key=$(printf '%s:%s' "$session_id" "$file_path" | sha256sum | cut -d' ' -f1)
+    else
+      # Fallback: base64-encode the key (no hashing available)
+      dedup_key=$(printf '%s:%s' "$session_id" "$file_path" | base64 | tr -d '=/+\n')
+    fi
+
+    dedup_file="$dedup_dir/$dedup_key"
+    if [[ -f "$dedup_file" ]]; then
+      exit 0
+    fi
+    touch "$dedup_file"
   fi
-  touch "$dedup_file"
 fi
 
 cat <<'GUIDANCE'
