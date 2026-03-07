@@ -12,8 +12,11 @@ command vs. hook). The plugin's own architecture demonstrates the rules it teach
 
 ## Implementation Status
 
-- **Phase 1 (active):** Core skill (`skills/plugin-design-advisor/SKILL.md`) + architecture-validator agent
-- **Phase 2:** Design command + requirements-analyzer + constraint-extractor agents
+- **Phase 1 (complete):** Core skill (`skills/plugin-design-advisor/SKILL.md`) + architecture-validator agent
+  - Validator correctly identifies all 4 anti-pattern types
+  - Self-audit passes: 0 critical findings against own source
+  - Known pattern: agent must load skill at runtime to avoid definition drift
+- **Phase 2 (next):** Design command + requirements-analyzer + constraint-extractor agents
 - **Phase 3:** plugin-file-guard hook
 - **Phase 4:** decision-explorer playground skill
 

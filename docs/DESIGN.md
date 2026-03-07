@@ -19,7 +19,7 @@ separate model → agent.
 
 ## Architecture
 
-```
+```sh
 plugin-design-advisor/
 ├── .claude-plugin/
 │   └── plugin.json                    # Plugin manifest
@@ -44,21 +44,24 @@ plugin-design-advisor/
 
 ## Implementation Phases
 
-- **Phase 1 (current):** Core skill + architecture-validator agent
-- **Phase 2:** Design command + requirements-analyzer + constraint-extractor agents
+- **Phase 1 (complete):** Core skill + architecture-validator agent + validate command
+  - Validator correctly identifies all 4 anti-pattern types
+  - Self-audit passes: 0 critical findings against own source
+  - Known pattern: agent must load skill at runtime to avoid definition drift
+- **Phase 2 (next):** Design command + requirements-analyzer + constraint-extractor agents
 - **Phase 3:** plugin-file-guard hook (after Phase 1 signal:noise is measured)
 - **Phase 4:** decision-explorer playground skill
 
 ## Primary Heuristics (seed content for SKILL.md)
 
-### Use a skill when:
+### Use a skill when
 
 - Encoding domain knowledge/patterns for Claude to apply inline
 - Auto-invocation from natural language is the right trigger
 - Knowledge is reusable across multiple agents
 - Work stays in the main context; context cost is acceptable
 
-### Use an agent when:
+### Use an agent when
 
 - Parallel or isolated workstreams needed
 - Different tool restrictions per subtask
@@ -67,19 +70,19 @@ plugin-design-advisor/
 - Well-defined input/output contract
 - Confidence-based filtering needed
 
-### Use a command when:
+### Use a command when
 
 - Multi-phase workflow with predetermined steps
 - Explicit user invocation is the correct trigger
 - Orchestrating agents with aggregation
 
-### Use a hook when:
+### Use a hook when
 
 - Automation should be invisible and event-driven
 - Trigger is a system event (file write, session start, tool use)
 - Guidance the user would otherwise forget to request
 
-### Use skill + agent when:
+### Use skill + agent when
 
 - Agent needs injected domain knowledge
 - Same knowledge reusable across multiple agents in the plugin
