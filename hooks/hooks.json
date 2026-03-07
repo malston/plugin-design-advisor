@@ -1,0 +1,17 @@
+{
+  "description": "Plugin file guard: reminds about skill vs agent classification when editing plugin components",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash $CLAUDE_PLUGIN_ROOT/hooks/plugin-file-guard.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

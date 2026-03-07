@@ -35,7 +35,8 @@ plugin-design-advisor/
 │   └── decision-explorer/
 │       └── SKILL.md                   # Interactive HTML decision tree for learners
 ├── hooks/
-│   └── plugin-file-guard.json         # PreToolUse on Write/Edit to agents/ and skills/ paths
+│   ├── hooks.json                     # PreToolUse on Write/Edit to agents/ and skills/ paths
+│   └── plugin-file-guard.sh           # Path filter, plugin detection, session dedup logic
 ├── tests/
 │   └── fixtures/
 │       └── misclassified-plugin/      # 6 misclassifications across 4 anti-pattern types
@@ -51,7 +52,9 @@ plugin-design-advisor/
 - **Phase 2 (complete):** Design command + requirements-analyzer + constraint-extractor agents
   - `/plugin-design-advisor:design` orchestrates parallel analysis via Task tool
   - `DECISIONS.md` suppression for intentional deviations
-- **Phase 3:** plugin-file-guard hook (after Phase 1 signal:noise is measured)
+- **Phase 3 (complete):** plugin-file-guard PreToolUse hook
+  - Bash script for path walking, path filtering, session dedup
+  - Hook JSON format limitation documented in DECISIONS.md
 - **Phase 4:** decision-explorer playground skill
 
 ## Primary Heuristics (seed content for SKILL.md)
