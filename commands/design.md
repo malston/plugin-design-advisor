@@ -72,7 +72,7 @@ recommended pattern. For example:
 - If recommending a skill → point to `skills/plugin-design-advisor/SKILL.md`
 - If recommending parallel agents → point to requirements-analyzer + constraint-extractor
 - If recommending a command → point to this design command
-- If recommending a hook → note that `hooks/plugin-file-guard.json` is planned for Phase 3
+- If recommending a hook → point to `hooks/hooks.json` (plugin-file-guard)
 
 This self-proof validates that the recommendation follows a proven pattern within the
 plugin's own architecture.
