@@ -13,15 +13,16 @@ different model, it's an agent.
 
 ## What's Included
 
-| Component                          | Purpose                                                  |
-| ---------------------------------- | -------------------------------------------------------- |
-| `skills/plugin-design-advisor/`    | Core heuristics for choosing the right plugin mechanism  |
-| `agents/architecture-validator.md` | Audits existing plugin structure for misclassifications  |
-| `agents/requirements-analyzer.md`  | Classifies task characteristics (Phase 2)                |
-| `agents/constraint-extractor.md`   | Identifies parallelism/isolation/tiering needs (Phase 2) |
-| `commands/design.md`               | Multi-phase design workflow (Phase 2)                    |
-| `hooks/plugin-file-guard.json`     | Guards against accidental misclassification (Phase 3)    |
-| `skills/decision-explorer/`        | Interactive decision tree for learners (Phase 4)         |
+| Component                          | Purpose                                                 |
+| ---------------------------------- | ------------------------------------------------------- |
+| `skills/plugin-design-advisor/`    | Core heuristics for choosing the right plugin mechanism |
+| `agents/architecture-validator.md` | Audits existing plugin structure for misclassifications |
+| `agents/requirements-analyzer.md`  | Classifies task characteristics                         |
+| `agents/constraint-extractor.md`   | Identifies parallelism/isolation/tiering needs          |
+| `commands/design.md`               | Multi-phase design workflow with parallel analysis      |
+| `commands/validate.md`             | Run architecture-validator against a plugin directory   |
+| `hooks/hooks.json`                 | PreToolUse guard on Write/Edit to agents/ and skills/   |
+| `skills/decision-explorer/`        | Interactive decision tree for learners (Phase 4)        |
 
 ## Anti-Patterns Detected
 
@@ -36,6 +37,9 @@ The skill and architecture-validator identify these misclassifications:
 
 ## Status
 
-Phase 1 active: core skill content and test fixtures complete. Architecture-validator agent in progress.
+- **Phase 1 (complete):** Core skill + architecture-validator agent
+- **Phase 2 (complete):** Design command + parallel analyzer agents
+- **Phase 3 (complete):** plugin-file-guard PreToolUse hook
+- **Phase 4 (planned):** decision-explorer interactive skill
 
 See `docs/DESIGN.md` for the full design specification.

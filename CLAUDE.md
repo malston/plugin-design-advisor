@@ -20,8 +20,11 @@ command vs. hook). The plugin's own architecture demonstrates the rules it teach
   - `/plugin-design-advisor:design` orchestrates parallel analysis via Task tool
   - Both analyzer agents emit structured JSON with explicit first/last character constraints
   - `DECISIONS.md` suppression mechanism for intentional architecture deviations
-- **Phase 3 (next):** plugin-file-guard hook
-- **Phase 4:** decision-explorer playground skill
+- **Phase 3 (complete):** plugin-file-guard PreToolUse hook
+  - Bash script handles path walking, agents/skills filtering, and session dedup
+  - Hook JSON format cannot express suppression declaratively; documented in DECISIONS.md
+  - Self-audit: 0 critical/warning findings (3 info, all suppressed via DECISIONS.md)
+- **Phase 4 (next):** decision-explorer playground skill
 
 ## Plugin Structure
 
