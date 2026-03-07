@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+.venv/
+venv/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# JetBrains
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Coverage
+coverage/
+.nyc_output/

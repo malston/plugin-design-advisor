@@ -1,0 +1,6 @@
+{
+  "name": "plugin-design-advisor",
+  "description": "Encode and demonstrate heuristics for Claude Code plugin design decisions -- skill vs. agent vs. command vs. hook.",
+  "version": "0.1.0",
+  "author": "Mark Alston"
+}
