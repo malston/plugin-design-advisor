@@ -51,9 +51,11 @@ You MUST respond with ONLY a JSON object. No markdown, no explanation, no preamb
 
 Pre-filled response start:
 
-```json
+```
 {
 ```
+
+Schema:
 
 ```json
 {

@@ -13,7 +13,7 @@ appears in this file.
 The architecture-validator flags these as agent-as-skill anti-patterns. This is
 a deliberate deviation. Justification:
 
-1. The design command runs both in parallel via Task tool -- the parallelism is real,
+1. The design command runs both agents in parallel via the Task tool -- the parallelism is real,
    it lives in the orchestrator not the agents themselves.
 2. This plugin is self-demonstrating. Collapsing these into skill sections would
    remove the only example of parallel agent orchestration in the plugin's own

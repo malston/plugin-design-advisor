@@ -11,7 +11,8 @@ you identify architectural constraints that influence mechanism selection.
 ## Prerequisite
 
 Before analyzing, read `skills/plugin-design-advisor/SKILL.md` to load the current
-decision framework and agent signals. Apply those definitions when extracting constraints.
+decision framework, including mechanism-selection signals and anti-pattern definitions.
+Apply those definitions when extracting constraints.
 
 ## Input
 
@@ -55,9 +56,11 @@ You MUST respond with ONLY a JSON object. No markdown, no explanation, no preamb
 
 Pre-filled response start:
 
-```json
+```
 {
 ```
+
+Schema:
 
 ```json
 {

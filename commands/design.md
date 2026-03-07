@@ -1,8 +1,13 @@
 ---
 description: Analyze a feature description and recommend the right plugin mechanism (skill, agent, command, or hook)
 argument-hint: <feature description>
-allowed-tools: Read, Glob, Task
+allowed-tools: Read, Task
 ---
+
+## Prerequisite
+
+Before producing your recommendation, read `skills/plugin-design-advisor/SKILL.md` to load
+the decision framework. Use it to map agent outputs to mechanism recommendations.
 
 ## Input validation
 
@@ -67,7 +72,7 @@ recommended pattern. For example:
 - If recommending a skill → point to `skills/plugin-design-advisor/SKILL.md`
 - If recommending parallel agents → point to requirements-analyzer + constraint-extractor
 - If recommending a command → point to this design command
-- If recommending a hook → point to `hooks/plugin-file-guard.json`
+- If recommending a hook → note that `hooks/plugin-file-guard.json` is planned for Phase 3
 
 This self-proof validates that the recommendation follows a proven pattern within the
 plugin's own architecture.
