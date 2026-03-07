@@ -11,4 +11,4 @@ read and analyze them for anti-patterns (e.g., hook-without-suppression).
 
 The actual Claude Code plugin hook format uses `hooks/hooks.json` with the
 wrapper structure documented in the hook-development skill. See
-`../../hooks/hooks.json` in the project root for a runtime example.
+`../../../hooks/hooks.json` in the project root for a runtime example.
