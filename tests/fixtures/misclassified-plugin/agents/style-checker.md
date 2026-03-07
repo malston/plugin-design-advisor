@@ -46,7 +46,7 @@ Return a JSON object:
 ```
 
 <!-- ANTI-PATTERN: agent-as-skill
-     This agent is read-only with no parallelism, isolation, or tiering benefit.
-     The conventions reference is domain knowledge that belongs in a skill.
-     The agent spawns a separate Claude instance just to apply static rules
-     that could be injected into the main context. -->
+     This agent has no parallelism or tiering benefit. Its tool list is empty,
+     so it cannot actually read files to check style. The conventions reference
+     is domain knowledge that belongs in a skill, injected into the main context
+     where Claude can apply it directly to code it already sees. -->

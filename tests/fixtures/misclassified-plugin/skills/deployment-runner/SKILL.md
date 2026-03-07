@@ -35,7 +35,7 @@ If any step fails:
 - `STAGING_URL`: Staging environment URL
 - `PROD_URL`: Production environment URL
 
-<!-- ANTI-PATTERN: skill-as-agent
+<!-- ANTI-PATTERN: procedure-as-skill
      This "skill" is actually a multi-step procedural workflow that executes
      tools, manages state across steps, and makes decisions based on outputs.
      It should be an agent (needs tool access, sequential execution, error
