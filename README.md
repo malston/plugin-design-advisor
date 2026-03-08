@@ -40,6 +40,6 @@ The skill and architecture-validator identify these misclassifications:
 - **Phase 1 (complete):** Core skill + architecture-validator agent
 - **Phase 2 (complete):** Design command + parallel analyzer agents
 - **Phase 3 (complete):** plugin-file-guard PreToolUse hook
-- **Phase 4 (planned):** decision-explorer interactive skill
+- **Phase 4 (complete):** decision-explorer interactive skill
 
 See `docs/DESIGN.md` for the full design specification.
