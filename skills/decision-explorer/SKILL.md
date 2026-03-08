@@ -167,8 +167,11 @@ Based on the path through the tree, warn about relevant anti-patterns when the a
 mismatch:
 
 - **Agent recommended but the subtask seems trivial:** Warn about **agent-as-skill**. If the
-  subtask doesn't need isolation, a different model, or separate tool permissions, it belongs in a
-  skill, not an agent.
+  subtask doesn't need isolation, parallelism, a different model, or separate tool permissions, it
+  belongs in a skill, not an agent.
+- **Agent recommended but the domain knowledge is reusable across contexts:** Warn about
+  **skill-as-agent**. If the knowledge driving the agent would be useful to other agents or
+  inline in conversation, extract it into a skill and have the agent load it at runtime.
 - **Skill recommended but it contains procedural steps with tool calls:** Warn about
   **procedure-as-skill**. Skills inject knowledge -- they don't execute multi-step procedures.
   Procedural content belongs in a command or agent.
