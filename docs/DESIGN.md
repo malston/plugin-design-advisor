@@ -124,7 +124,7 @@ plugin-design-advisor/
 
 - MCP server: out of scope -- no external service dependency justified
 - Agent model: Sonnet for all analysis agents (not Haiku -- reasoning quality matters)
-- Validator output format: `{ component, finding_type, severity, recommendation }`
+- Validator output format: `{ component, path, finding_type, severity, evidence, recommendation }`
 - Hook path filter: walk up max 4 directories looking for `.claude-plugin/plugin.json`
 - Validator false positives: `DECISIONS.md` suppression mechanism (Phase 2)
 - decision-explorer state: stateless conversational skill, no persistence needed
