@@ -7,8 +7,9 @@ description: Interactive decision tree that guides you through choosing the righ
 
 ## When to invoke
 
-Use this skill when someone asks for an interactive decision walkthrough: "help me choose",
-"decision tree", "I'm not sure whether to use", "skill or agent", or "command or hook".
+Use this skill when someone asks for help choosing a plugin mechanism: "interactive decision",
+"help me choose", "decision tree", "I'm not sure whether to use", "skill or agent", or
+"command or hook".
 
 This skill provides a guided conversational exploration that asks questions one at a time and
 narrows the design space step by step. At the end, it produces a copyable architecture
