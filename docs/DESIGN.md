@@ -129,10 +129,7 @@ plugin-design-advisor/
 - Validator false positives: `DECISIONS.md` suppression mechanism (Phase 2)
 - decision-explorer state: stateless conversational skill, no persistence needed
 - Hook suppression: session dedup via temp files keyed by session ID in `plugin-file-guard.sh` (Phase 3)
-
-### Open
-
-- Agent schema versioning: maintenance contract when heuristics evolve?
+- Schema versioning is manual and change-coupled. Any commit that adds or renames a mechanism in `skills/plugin-design-advisor/SKILL.md` must update the relevant agent schemas and the design command's aggregation logic in the same PR. The `architecture-validator` self-audit catches misalignment if the agents start producing unrecognized values. No tooling required beyond the existing self-audit gate.
 
 ## Success Criteria
 
