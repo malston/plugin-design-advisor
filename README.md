@@ -43,3 +43,8 @@ The skill and architecture-validator identify these misclassifications:
 - **Phase 4 (complete):** decision-explorer interactive skill
 
 See `docs/DESIGN.md` for the full design specification.
+
+## See Also
+
+- **[plugin-dev](https://github.com/anthropics/claude-plugins-official)** -- comprehensive plugin development toolkit covering structure, implementation, and scaffolding for every component type.
+- **[skill-creator](https://github.com/anthropics/claude-plugins-official)** -- once you've decided _what_ to build, skill-creator helps you write, test, and iterate on skills with eval infrastructure and description optimization.
