@@ -79,8 +79,7 @@ Signals to consider:
 Options:
 
 1. **Yes** -- recommend **Agent (isolated)**.
-2. **No** -- the capability may not need an agent after all. Revisit Q3 to evaluate whether it
-   fits as a skill, command, or hook instead.
+2. **No** -- the capability may not need an agent after all. Proceed to Q3.
 
 #### Q3: Is the trigger a user action or a system event?
 
