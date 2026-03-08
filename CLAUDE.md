@@ -24,7 +24,10 @@ command vs. hook). The plugin's own architecture demonstrates the rules it teach
   - Bash script handles path walking, agents/skills filtering, and session dedup
   - Hook JSON format cannot express suppression declaratively; documented in DECISIONS.md
   - Self-audit: 0 critical/warning findings (3 info, all suppressed via DECISIONS.md)
-- **Phase 4 (next):** decision-explorer playground skill
+- **Phase 4 (complete):** decision-explorer interactive skill
+  - Adaptive branching decision tree with 2-4 questions per path
+  - Produces copyable architecture recommendation block
+  - Complements main skill (reference) with guided exploration
 
 ## Plugin Structure
 

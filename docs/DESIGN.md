@@ -55,7 +55,10 @@ plugin-design-advisor/
 - **Phase 3 (complete):** plugin-file-guard PreToolUse hook
   - Bash script for path walking, path filtering, session dedup
   - Hook JSON format limitation documented in DECISIONS.md
-- **Phase 4:** decision-explorer playground skill
+- **Phase 4 (complete):** decision-explorer interactive skill
+  - Adaptive branching decision tree with 2-4 questions per path
+  - Produces copyable architecture recommendation block
+  - Complements main skill (reference) with guided exploration
 
 ## Primary Heuristics (seed content for SKILL.md)
 
