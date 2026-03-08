@@ -24,7 +24,8 @@ plugin-design-advisor/
 ├── .claude-plugin/
 │   └── plugin.json                    # Plugin manifest
 ├── commands/
-│   └── design.md                      # /plugin-design-advisor:design
+│   ├── design.md                      # /plugin-design-advisor:design
+│   └── validate.md                    # /plugin-design-advisor:validate
 ├── agents/
 │   ├── requirements-analyzer.md       # Classifies task characteristics (Sonnet, read-only)
 │   ├── constraint-extractor.md        # Identifies parallelism/isolation/tiering needs (Sonnet, read-only)
@@ -38,8 +39,12 @@ plugin-design-advisor/
 │   ├── hooks.json                     # PreToolUse on Write/Edit to agents/ and skills/ paths
 │   └── plugin-file-guard.sh           # Path filter, plugin detection, session dedup logic
 ├── tests/
-│   └── fixtures/
-│       └── misclassified-plugin/      # 6 misclassifications across 4 anti-pattern types
+│   ├── fixtures/
+│   │   └── misclassified-plugin/      # 6 misclassifications across 4 anti-pattern types
+│   └── hooks/
+│       ├── plugin-file-guard-test.md  # Test scenarios for the hook
+│       └── test-plugin-file-guard.sh  # Executable hook tests
+├── DECISIONS.md                       # Intentional deviations from heuristics
 └── README.md
 ```
 
@@ -119,14 +124,14 @@ plugin-design-advisor/
 
 - MCP server: out of scope -- no external service dependency justified
 - Agent model: Sonnet for all analysis agents (not Haiku -- reasoning quality matters)
-- Validator output format: `{ component, finding_type, severity, recommendation }`
+- Validator output format: `{ component, path, finding_type, severity, evidence, recommendation }`
 - Hook path filter: walk up max 4 directories looking for `.claude-plugin/plugin.json`
+- Validator false positives: `DECISIONS.md` suppression mechanism (Phase 2)
+- decision-explorer state: stateless conversational skill, no persistence needed
+- Hook suppression: session dedup via temp files keyed by session ID in `plugin-file-guard.sh` (Phase 3)
 
 ### Open
 
-- Hook suppression: how to detect if main skill is already in context this session?
-- Validator false positives: resolved -- `DECISIONS.md` suppression implemented in Phase 2
-- decision-explorer state: resolved -- stateless conversational skill, no persistence needed
 - Agent schema versioning: maintenance contract when heuristics evolve?
 
 ## Success Criteria

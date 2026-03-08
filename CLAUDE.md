@@ -50,4 +50,4 @@ This is a Claude Code plugin (`.claude-plugin/plugin.json`). Components:
 
 - No MCP server -- no external service dependency justifies one
 - Sonnet for all analysis agents (not Haiku -- reasoning quality matters)
-- Validator output: `{ component, finding_type, severity, recommendation }`
+- Validator output: `{ component, path, finding_type, severity, evidence, recommendation }`
