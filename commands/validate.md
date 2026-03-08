@@ -1,13 +1,13 @@
 ---
 description: Validate an existing plugin's architecture against design heuristics
 argument-hint: <plugin-directory-path>
-allowed-tools: Read, Glob
+allowed-tools: Read, Glob, Task
 ---
 
 Validate the plugin at: $ARGUMENTS
 
-Use the architecture-validator agent to audit the plugin structure.
-The agent should:
+Launch the **architecture-validator** agent using the Task tool to audit the plugin structure.
+Pass the plugin directory path to the agent. The agent will:
 
 1. Glob the directory to map all components (agents/, skills/, commands/, hooks/)
 2. Read each component file
