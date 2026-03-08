@@ -33,7 +33,7 @@ plugin-design-advisor/
 │   ├── plugin-design-advisor/
 │   │   └── SKILL.md                   # Core heuristics — the primary artifact
 │   └── decision-explorer/
-│       └── SKILL.md                   # Interactive HTML decision tree for learners
+│       └── SKILL.md                   # Interactive decision tree for mechanism selection
 ├── hooks/
 │   ├── hooks.json                     # PreToolUse on Write/Edit to agents/ and skills/ paths
 │   └── plugin-file-guard.sh           # Path filter, plugin detection, session dedup logic
@@ -55,7 +55,10 @@ plugin-design-advisor/
 - **Phase 3 (complete):** plugin-file-guard PreToolUse hook
   - Bash script for path walking, path filtering, session dedup
   - Hook JSON format limitation documented in DECISIONS.md
-- **Phase 4:** decision-explorer playground skill
+- **Phase 4 (complete):** decision-explorer interactive skill
+  - Adaptive branching decision tree with 2-4 questions per path
+  - Produces copyable architecture recommendation block
+  - Complements main skill (reference) with guided exploration
 
 ## Primary Heuristics (seed content for SKILL.md)
 
@@ -123,7 +126,7 @@ plugin-design-advisor/
 
 - Hook suppression: how to detect if main skill is already in context this session?
 - Validator false positives: resolved -- `DECISIONS.md` suppression implemented in Phase 2
-- decision-explorer state: stateless HTML artifact acceptable, or persist via storage API?
+- decision-explorer state: resolved -- stateless conversational skill, no persistence needed
 - Agent schema versioning: maintenance contract when heuristics evolve?
 
 ## Success Criteria
