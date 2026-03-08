@@ -1,6 +1,8 @@
 ---
 name: decision-explorer
 description: Interactive decision tree that guides you through choosing the right Claude Code plugin mechanism. Use when asked "help me choose", "decision tree", "I'm not sure whether to use", "skill or agent", or "command or hook".
+status: active
+phase: 4
 ---
 
 # Decision Explorer
