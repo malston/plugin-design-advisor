@@ -143,3 +143,64 @@ Options:
    doesn't fire redundantly (e.g., check session state or whether the relevant skill is already
    in context).
 2. **No** -- recommend **Command** (user-triggered on event notification).
+
+## After reaching a recommendation
+
+Before presenting the final output, perform these checks against the path taken through the
+decision tree.
+
+### Combo pattern check
+
+If the recommendation is **Agent** and the user described reusable domain knowledge during the
+conversation (pattern libraries, coding standards, decision frameworks), recommend **Skill+Agent**
+instead. The skill captures the knowledge; the agent loads it at runtime and applies it in an
+isolated context.
+
+If the recommendation is **Hook** and the conversation also identified a user-facing workflow
+component (setup steps, configuration review, or multi-step orchestration), recommend
+**Hook+Command** instead. The hook enforces the guardrail automatically; the command gives the user
+an explicit way to run the broader workflow on demand.
+
+### Anti-pattern warnings
+
+Based on the path through the tree, warn about relevant anti-patterns when the answers suggest a
+mismatch:
+
+- **Agent recommended but the subtask seems trivial:** Warn about **agent-as-skill**. If the
+  subtask doesn't need isolation, a different model, or separate tool permissions, it belongs in a
+  skill, not an agent.
+- **Skill recommended but it contains procedural steps with tool calls:** Warn about
+  **procedure-as-skill**. Skills inject knowledge -- they don't execute multi-step procedures.
+  Procedural content belongs in a command or agent.
+- **Command recommended but the trigger is a system event the user might forget:** Warn about
+  **command-without-hook**. If the user is unlikely to remember invoking the command at the right
+  moment, pair it with a hook or replace the command with a hook entirely.
+- **Hook recommended but no suppression logic was considered:** Warn about
+  **hook-without-suppression**. Every hook needs a mechanism to avoid firing redundantly (session
+  state checks, context detection, or similar guards).
+
+### Cross-reference
+
+Point the user to the **plugin-design-advisor** skill for the full heuristics, anti-pattern
+definitions, classification matrix, and worked examples. That skill is the comprehensive reference;
+this decision tree is a guided entry point into it.
+
+## Output
+
+Present the final recommendation as a fenced markdown code block so the user can copy it directly.
+Fill in the template using the tracked path through the decision tree -- the justification should
+connect the user's answers to the recommendation.
+
+````markdown
+```markdown
+## Architecture
+
+- **Mechanism:** [Skill | Agent | Command | Hook | Skill+Agent | Hook+Command]
+- **Justification:** [1-2 sentences derived from the decision path taken]
+- **Anti-patterns avoided:** [which ones and why]
+- **Signals matched:** [list the signals from the classification matrix that apply]
+```
+````
+
+After presenting the recommendation, offer to walk through another capability if the user has more
+components to classify.
